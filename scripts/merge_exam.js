@@ -40,7 +40,7 @@ for (const q of parsed) {
     e.qtype = "mcq"; e.verified = true;
     updated++;
   } else {
-    bank.push({ qtype: "mcq", no: q.idx + 1, stem: q.title, options: opts, answer: q.answer, answer_text, source: `exam-${TAG}`, dupCount: 1 });
+    bank.push({ qtype: "mcq", no: q.idx + 1, stem: q.title, options: opts, answer: q.answer, answer_text, source: `exam-${TAG}`, dupCount: 1, verified: true });
     added++;
   }
 }
@@ -56,8 +56,22 @@ fs.writeFileSync(path.join(ROOT, "data", "bank.csv"), out, "utf8");
 console.log(JSON.stringify({ updated, added, conflicts: conflicts.length, total: bank.length }, null, 1));
 if (conflicts.length) {
   const f = path.join(ROOT, "data", "conflicts_exam.md");
-  let rep = `# 题库与考试答案不一致\n\n共 ${conflicts.length} 条。\n\n`;
-  for (const c of conflicts) rep += `- ${c.stem}\n  - 题库: ${c.bank}\n  - 考试: ${c.exam}\n`;
+  // 追加模式：保留历史冲突记录，按条目文本去重（原来整份覆盖会丢掉以往记录）
+  const entries = [];
+  if (fs.existsSync(f)) {
+    for (const block of fs.readFileSync(f, "utf8").split(/\r?\n(?=- )/)) {
+      const t = block.trim();
+      if (t.startsWith("- ")) entries.push(t);
+    }
+  }
+  const key = (s) => s.replace(/\s+/g, "");
+  const seen = new Set(entries.map(key));
+  for (const c of conflicts) {
+    const block = `- ${c.stem}\n  - 题库: ${c.bank}\n  - 考试: ${c.exam}`;
+    if (!seen.has(key(block))) { entries.push(block); seen.add(key(block)); }
+  }
+  let rep = `# 题库与考试答案不一致\n\n共 ${entries.length} 条。\n\n`;
+  for (const b of entries) rep += b + "\n\n";
   fs.writeFileSync(f, rep, "utf8");
-  console.log("已写入 data/conflicts_exam.md");
+  console.log(`已写入 data/conflicts_exam.md（累计 ${entries.length} 条）`);
 }
