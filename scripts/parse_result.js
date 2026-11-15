@@ -11,15 +11,23 @@ const html = fs.readFileSync(path.join(DIR, "result.html"), "utf8");
 const readyFile = path.join(DIR, "answers.ready.json");
 const mine = fs.existsSync(readyFile) ? JSON.parse(fs.readFileSync(readyFile, "utf8")) : {};
 
+function cleanText(s) {
+  return String(s || "").replace(/<br\s*\/?>/gi, " ").replace(/<[^>]+>/g, "").replace(/&nbsp;/g, " ").replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&amp;/g, "&").replace(/\s+/g, " ").trim();
+}
+
 const ms = [...html.matchAll(/lbQTitle[^>]*>([\s\S]*?)<\/span>/g)];
 const qs = [];
 for (let k = 0; k < ms.length; k++) {
   const start = ms[k].index;
-  const end = k + 1 < ms.length ? ms[k + 1].index : html.length;
-  const block = html.slice(start, end);
-  const title = ms[k][1].replace(/<[^>]+>/g, "").replace(/&nbsp;/g, " ").replace(/\s+/g, " ").trim();
-  const labels = [...block.matchAll(/<label[^>]*>([\s\S]*?)<\/label>/g)].map(m => m[1].replace(/<[^>]+>/g, "").replace(/&nbsp;/g, " ").replace(/\s+/g, " ").trim());
-  const ids = [...block.matchAll(/type="radio"[^>]*?value="(\d+)"/g)].map(m => m[1]);
+  // 结果页每题末尾是“参考答案”，用它作为块边界（比下一题标题更可靠）
+  const ansPos = html.indexOf("参考答案", start);
+  const nextPos = k + 1 < ms.length ? ms[k + 1].index : html.length;
+  let end = ansPos >= 0 && ansPos < nextPos ? ansPos + 800 : nextPos;
+  const block = html.slice(start, Math.min(end, html.length));
+  const title = cleanText(ms[k][1]);
+  const labels = [...block.matchAll(/<label[^>]*>([\s\S]*?)<\/label>/g)].map(m => m[1]);
+  let ids = [...block.matchAll(/type\s*=\s*["']radio["'][^>]*?value\s*=\s*["'](\d+)["']/gi)].map(m => m[1]);
+  if (!ids.length) ids = [...block.matchAll(/value\s*=\s*["'](\d+)["'][^>]*?type\s*=\s*["']radio["']/gi)].map(m => m[1]);
   let ans = null;
   const am = block.match(/参考答案\s*[:：]([\s\S]{0,400}?)<\/li>/);
   if (am) {
@@ -28,9 +36,10 @@ for (let k = 0; k < ms.length; k++) {
     if (lm) ans = lm[1].toUpperCase();
   }
   const options = ids.map((id, i) => {
-    const txt = labels[i] || "";
-    const lm = txt.match(/^([A-D])[.、．]\s*/);
-    return { id, letter: lm ? lm[1] : String.fromCharCode(65 + i), text: txt.replace(/^[A-D][.、．]\s*/, "").trim() };
+    const raw = labels[i] || "";
+    // 正确字母优先取 input 的显式 value（=A/B/C/D），否则取 label 内文字前缀，最后才退回顺序字母
+    const lm = raw.replace(/<[^>]+>/g, "").match(/^\s*([A-D])[.、．]/);
+    return { id, letter: lm ? lm[1] : String.fromCharCode(65 + i), text: cleanText(raw).replace(/^[A-D][.、．]\s*/, "").trim() };
   });
   const myId = mine[String(k)];
   const myOpt = options.find(o => o.id === myId);

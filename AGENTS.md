@@ -19,23 +19,37 @@
 # 查询（不需要 cookie）
 node scripts/answer_paper.js examples/questions.sample.json
 
-# 完整一轮（需要 cookie）
+# 完整一轮（需要 cookie）。浏览器常驻，每条命令都是短命进程，断了随时重连不丢试卷
 export EXAM_COOKIE="ASP.NET_SessionId 的值"
-node scripts/exam_runner.js run1          # 开考并导出 runs/run1/questions.json，等待 answers.ready.json
-node scripts/prepare_answers.js run1      # 题库匹配 -> answers.json / unmatched.json
-# 依据 unmatched.json 补答，写入 runs/run1/answers.ready.json（idx -> optionId）
-node scripts/parse_result.js run1         # 解析 result.html，输出得分与错题
-node scripts/merge_exam.js run1           # 合并进 data/bank.json（自动重建 bank.csv）
+node scripts/examctl.js chrome            # 启动常驻有头 Chrome（调试端口 9611），只需一次
+node scripts/examctl.js open  run1        # 打开考试页（未开考则停在“开始考试”页）
+node scripts/examctl.js start run1        # 开考 -> questions.json + 题库匹配 -> answers.json / unmatched.json
+node scripts/examctl.js list  run1        # 看需要补答的题（含题库弱匹配参考）
+node scripts/examctl.js apply run1 '{"12":"34567"}'   # 补答：键=题目 idx，值=option.id
+node scripts/examctl.js fill  run1        # 填进页面（不提交），可反复执行
+node scripts/examctl.js submit run1       # 交卷 -> result.html -> parsed.json -> score.json
+node scripts/examctl.js merge run1        # 合并进 data/bank.json + bank.csv，冲突写 data/conflicts_exam.md
+node scripts/examctl.js status            # 随时查看当前标签页状态
+node scripts/examctl.js close             # 关闭常驻浏览器
 ```
+
+`submit` 前会打印页面勾选数量，`fill` 输出 `{ok, miss, filled}`，务必确认 `miss` 为空、`filled` 等于题数再交卷。
+
+`examctl.js` 环境变量：`EXAM_COOKIE`（必填）、`CDP_PORT`（默认 9611）、`CHROME_PROFILE`（默认 `~/.dy-lib-chrome`）、`CHROME_PATH`、`EXAM_URL`、`MATCH_MIN`（默认 0.75）、`HOLD_SEC`（交卷前等待秒数，默认 0）。
+
+> 为什么不建议用整条流水线的长进程：进程一旦被杀（工具超时、作业回收）浏览器随之退出，试卷就丢了。常驻浏览器 + 短命令没有这个问题。
+
+旧的单进程脚本（`exam_runner.js` / `prepare_answers.js` / `parse_result.js` / `merge_exam.js`）仍保留可用，但需要自己起 Chrome 且一条链路跑完，调试时才用。
 
 ## 回答流程（Agent 视角）
 
-1. `prepare_answers.js` 输出 `matched` / `unmatched`。
+1. `examctl.js start` 输出 `matched` / `unmatched`，结果落在 `runs/<tag>/`。
 2. 对 `unmatched.json` 中每题：读题干与四个选项，按文学知识作答；不要留空。
-3. 把补答合并进 `answers.ready.json`（键是题目下标，值是 `option.id`，不是字母）。
-4. 交卷后必须运行 `parse_result.js`，确认 `myCorrect`/`score`。
-5. 运行 `merge_exam.js`，检查新增/更新/冲突数量；有冲突写入 `data/conflicts_exam.md`。
-6. 若 `score` 未满分，可再跑一轮；题库会随轮次变大。
+3. `examctl.js apply <tag> '<json>'` 把补答合并进 `answers.ready.json`（键是题目下标，值是 `option.id`，不是字母）。
+4. `examctl.js fill` 填进页面，确认 `miss` 为空、`filled` 等于题数。
+5. `examctl.js submit` 交卷并自动解析，检查 `score.json` 的 `myCorrect`/`score`。
+6. `examctl.js merge` 入库，检查 `updated`/`added`/`conflicts`；有冲突写入 `data/conflicts_exam.md`。
+7. 若 `score` 未满分，可再跑一轮；题库会随轮次变大。
 
 ## 数据格式
 
@@ -62,6 +76,8 @@ node scripts/merge_exam.js run1           # 合并进 data/bank.json（自动重
 
 | 脚本 | 职责 |
 |---|---|
+| `scripts/examctl.js` | 分步控制（推荐）：chrome/open/start/list/apply/fill/submit/merge/status/close |
+| `scripts/shot.js` | 对常驻浏览器截图并统计勾选数量，交卷前核对 |
 | `scripts/lib_match.js` | 归一化、Dice 相似度、题干匹配、选项匹配 |
 | `scripts/answer_paper.js` | 单次查询 CLI |
 | `scripts/exam_runner.js` | CDP 驱动 Chrome：开考、导出题目、等待答案、交卷、存结果页 |
@@ -69,6 +85,7 @@ node scripts/merge_exam.js run1           # 合并进 data/bank.json（自动重
 | `scripts/parse_result.js` | 解析结果页（含参考答案）并算分 |
 | `scripts/merge_exam.js` | 合并答案、去重、重建 CSV、记录冲突 |
 | `scripts/build_bank.js` | 从 `data/raw/大语题库.txt` 重建题库（`--force` 覆盖前会备份） |
+| `scripts/repair_bank.js` | 定点修复"题干里拼进选项和下一题"的脏条目并重建 CSV（`--dry` 只报告） |
 | `scripts/extract_docx_text.ps1` | docx → txt |
 
 ## 故障排查
