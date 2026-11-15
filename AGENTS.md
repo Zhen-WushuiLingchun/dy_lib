@@ -19,14 +19,20 @@
 # 查询（不需要 cookie）
 node scripts/answer_paper.js examples/questions.sample.json
 
+# 取 cookie（有头 Chrome，登录后自动打印；会校验该 session 能否打开考试页）
+node scripts/get_cookie.js
+
 # 完整一轮（需要 cookie）
 export EXAM_COOKIE="ASP.NET_SessionId 的值"
 node scripts/exam_runner.js run1          # 开考并导出 runs/run1/questions.json，等待 answers.ready.json
 node scripts/prepare_answers.js run1      # 题库匹配 -> answers.json / unmatched.json
-# 依据 unmatched.json 补答，写入 runs/run1/answers.ready.json（idx -> optionId）
+# 依据 unmatched.json 补答，写入 runs/run1/overrides.json（{"idx":"optionId"}）
+node scripts/merge_ready.js run1          # -> answers.ready.json（runner 随后暂停 HOLD_SEC 秒再交卷）
 node scripts/parse_result.js run1         # 解析 result.html，输出得分与错题
 node scripts/merge_exam.js run1           # 合并进 data/bank.json（自动重建 bank.csv）
 ```
+
+交卷节奏由 `HOLD_SEC` 控制（默认 120 秒），计的是**答完题之后**的停顿，用于人工复核；`KEEP_OPEN=1` 可让浏览器在交卷后保持打开。
 
 ## 回答流程（Agent 视角）
 
