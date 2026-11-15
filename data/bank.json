@@ -153,7 +153,8 @@
    "D",
    "B"
   ],
-  "answer_text": "李白"
+  "answer_text": "李白",
+  "verified": true
  },
  {
   "qtype": "mcq",
@@ -301,12 +302,12 @@
   "no": 16,
   "stem": "下列苏轼的作品中没有出现“杖”这一意象的是",
   "options": {
-   "A": "《和子由渑池怀旧》",
-   "B": "《临江仙?夜归临皋》（“夜饮东坡醒复醉”）",
-   "C": "《东坡》",
-   "D": "《定风波》（“莫听穿林打叶声”）"
+   "A": "《东坡》",
+   "B": "《定风波》（“莫听穿林打叶声”）",
+   "C": "《和子由渑池怀旧》",
+   "D": "《临江仙?夜归临皋》（“夜饮东坡醒复醉”）"
   },
-  "answer": "A",
+  "answer": "C",
   "source": "answered",
   "dupCount": 4,
   "altAnswers": [
@@ -476,12 +477,12 @@
   "no": 25,
   "stem": "鲁迅将（）称为“中国最杰出的抒情诗人”。",
   "options": {
-   "A": "穆旦",
-   "B": "冯至",
-   "C": "戴望舒",
-   "D": "闻一多"
+   "A": "闻一多",
+   "B": "穆旦",
+   "C": "冯至",
+   "D": "戴望舒"
   },
-  "answer": "B",
+  "answer": "C",
   "source": "answered",
   "dupCount": 5,
   "altAnswers": [
@@ -490,7 +491,8 @@
    "C",
    "D"
   ],
-  "answer_text": "冯至"
+  "answer_text": "冯至",
+  "verified": true
  },
  {
   "qtype": "mcq",
@@ -601,9 +603,9 @@
   "stem": "在《梵高的坟茔》中，范曾着力贬抑的画家是谁",
   "options": {
    "A": "毕加索",
-   "B": "莫奈",
-   "C": "罗丹",
-   "D": "高更"
+   "B": "高更",
+   "C": "莫奈",
+   "D": "罗丹"
   },
   "answer": "A",
   "source": "answered",
@@ -639,18 +641,19 @@
   "no": 33,
   "stem": "从《复仇》可见鲁迅一种特殊的心态，这种心态是",
   "options": {
-   "A": "捣乱心态",
-   "B": "速朽心态",
-   "C": "狂人式的被迫害妄想",
+   "A": "速朽心态",
+   "B": "狂人式的被迫害妄想",
+   "C": "捣乱心态",
    "D": "从容赴死心态"
   },
-  "answer": "A",
+  "answer": "C",
   "source": "answered",
   "dupCount": 2,
   "altAnswers": [
    "A"
   ],
-  "answer_text": "捣乱心态"
+  "answer_text": "捣乱心态",
+  "verified": true
  },
  {
   "qtype": "mcq",
@@ -713,12 +716,12 @@
   "no": 37,
   "stem": "下列作家，对魏晋文章情有独钟的是",
   "options": {
-   "A": "鲁迅",
-   "B": "沈从文",
+   "A": "沈从文",
+   "B": "胡适",
    "C": "王蒙",
-   "D": "胡适"
+   "D": "鲁迅"
   },
-  "answer": "A",
+  "answer": "D",
   "source": "answered",
   "dupCount": 4,
   "altAnswers": [
@@ -726,7 +729,8 @@
    "C",
    "D"
   ],
-  "answer_text": "鲁迅"
+  "answer_text": "鲁迅",
+  "verified": true
  },
  {
   "qtype": "mcq",
@@ -769,20 +773,21 @@
  {
   "qtype": "mcq",
   "no": 40,
-  "stem": "“庶几”的意思是？A. 没有几个B. 平民C. 庶民D. 差不多1.王蒙在《语言的功能与陷阱》中曾提到李商隐的诗歌，是为了说明语言哪方面的问题？",
+  "stem": "“庶几”的意思是( )",
   "options": {
-   "A": "言过其实的问题",
-   "B": "言不尽意的问题",
-   "C": "语言可以推进思想的问题",
-   "D": "语言具有艺术和审美功能的问题"
+   "A": "没有几个",
+   "B": "平民",
+   "C": "庶民",
+   "D": "差不多"
   },
   "answer": "D",
-  "source": "answered",
+  "source": "repair",
   "dupCount": 1,
   "altAnswers": [
    "D"
   ],
-  "answer_text": "语言具有艺术和审美功能的问题"
+  "answer_text": "差不多",
+  "verified": true
  },
  {
   "qtype": "mcq",
@@ -1214,32 +1219,39 @@
   "no": 34,
   "stem": "王国维认为，古今成大事业大学问者必经三种境界，其第二境为",
   "options": {
-   "A": "衣带渐宽终不悔，为伊消得人憔悴",
-   "B": "众里寻他千百度，蓦然回首，那人正在灯火阑珊处",
-   "C": "昨夜西风凋碧树，独上高楼，望尽天涯路",
-   "D": "欲上高峰窥皓月，偶开天眼觑红尘"
+   "A": "昨夜西风凋碧树，独上高楼，望尽天涯路",
+   "B": "欲上高峰窥皓月，偶开天眼觑红尘",
+   "C": "衣带渐宽终不悔，为伊消得人憔悴",
+   "D": "众里寻他千百度，蓦然回首，那人正在灯火阑珊处"
   },
-  "answer": "A",
+  "answer": "C",
   "source": "answered",
   "dupCount": 3,
   "altAnswers": [
    "A",
    "B"
   ],
-  "answer_text": "衣带渐宽终不悔，为伊消得人憔悴"
+  "answer_text": "衣带渐宽终不悔，为伊消得人憔悴",
+  "verified": true
  },
  {
-  "qtype": "inline",
+  "qtype": "mcq",
   "no": 35,
-  "stem": "以下属于萧红作品的是： 《呼兰河传》B. 《风云初记》C. 《科尔沁旗草原》D. 《八月的乡村》",
-  "options": null,
-  "answer": null,
-  "source": "inline",
+  "stem": "以下属于萧红作品的是( )",
+  "options": {
+   "A": "《呼兰河传》",
+   "B": "《风云初记》",
+   "C": "《科尔沁旗草原》",
+   "D": "《八月的乡村》"
+  },
+  "answer": "A",
+  "source": "repair",
   "raw": "以下属于萧红作品的是： 《呼兰河传》B. 《风云初记》C. 《科尔沁旗草原》D. 《八月的乡村》",
   "dupCount": 1,
   "altAnswers": [],
-  "answer_text": null,
-  "fused": true
+  "answer_text": "《呼兰河传》",
+  "fused": true,
+  "verified": true
  },
  {
   "qtype": "mcq",
@@ -1285,37 +1297,39 @@
   "no": 39,
   "stem": "《组织部来了个年轻人》是谁的代表作",
   "options": {
-   "A": "王蒙",
-   "B": "贾平凹",
+   "A": "贾平凹",
+   "B": "王小波",
    "C": "韩少功",
-   "D": "王小波"
+   "D": "王蒙"
   },
-  "answer": "A",
+  "answer": "D",
   "source": "answered",
   "dupCount": 1,
   "altAnswers": [
    "A"
   ],
-  "answer_text": "王蒙"
+  "answer_text": "王蒙",
+  "verified": true
  },
  {
   "qtype": "mcq",
   "no": 40,
   "stem": "王蒙在《语言的功能与陷阱》中举了“轮扁斫轮”的例子，用来说明语言的哪种陷阱？",
   "options": {
-   "A": "言不能达意",
+   "A": "言过其实",
    "B": "语言的通俗化",
-   "C": "语言是双面剑",
-   "D": "言过其实"
+   "C": "言不能达意",
+   "D": "语言是双面剑"
   },
-  "answer": "A",
+  "answer": "C",
   "source": "answered",
   "dupCount": 2,
   "altAnswers": [
    "A",
    "B"
   ],
-  "answer_text": "言不能达意"
+  "answer_text": "言不能达意",
+  "verified": true
  },
  {
   "qtype": "mcq",
@@ -1381,19 +1395,20 @@
   "no": 7,
   "stem": "下列关于张岱小品文的表述不正确的是",
   "options": {
-   "A": "别具只眼，特别重视对于世态人情和众生相的细致考察和描写",
-   "B": "像一幅幅色彩明丽的风俗画",
-   "C": "多是对于往日繁华景象的追怀",
-   "D": "全部收录于《西湖梦寻》"
+   "A": "全部收录于《西湖梦寻》",
+   "B": "多是对于往日繁华景象的追怀",
+   "C": "像一幅幅色彩明丽的风俗画",
+   "D": "别具只眼，特别重视对于世态人情和众生相的细致考察和描写"
   },
-  "answer": "D",
+  "answer": "A",
   "source": "answered",
   "dupCount": 3,
   "altAnswers": [
    "D",
    "A"
   ],
-  "answer_text": "全部收录于《西湖梦寻》"
+  "answer_text": "全部收录于《西湖梦寻》",
+  "verified": true
  },
  {
   "qtype": "mcq",
@@ -1476,18 +1491,19 @@
   "no": 25,
   "stem": "在《一只特立独行的猪》中，王小波对这只猪的基本态度是？",
   "options": {
-   "A": "冷漠和无所谓",
-   "B": "仇恨",
-   "C": "喜爱和尊敬",
-   "D": "厌恶和责备"
+   "A": "厌恶和责备",
+   "B": "喜爱和尊敬",
+   "C": "仇恨",
+   "D": "冷漠和无所谓"
   },
-  "answer": "C",
+  "answer": "B",
   "source": "answered",
   "dupCount": 2,
   "altAnswers": [
    "C"
   ],
-  "answer_text": "喜爱和尊敬"
+  "answer_text": "喜爱和尊敬",
+  "verified": true
  },
  {
   "qtype": "mcq",
@@ -1550,12 +1566,12 @@
   "no": 32,
   "stem": "“少游已矣，虽万人何赎?”是苏轼对哪位作家的惋惜慨叹？",
   "options": {
-   "A": "晏殊",
-   "B": "黄庭坚",
-   "C": "晁补之",
-   "D": "秦观"
+   "A": "黄庭坚",
+   "B": "晁补之",
+   "C": "秦观",
+   "D": "晏殊"
   },
-  "answer": "D",
+  "answer": "C",
   "source": "answered",
   "dupCount": 4,
   "altAnswers": [
@@ -1563,7 +1579,8 @@
    "B",
    "A"
   ],
-  "answer_text": "秦观"
+  "answer_text": "秦观",
+  "verified": true
  },
  {
   "qtype": "mcq",
@@ -1651,18 +1668,19 @@
   "stem": "秦观的词集是",
   "options": {
    "A": "《东坡乐府》",
-   "B": "《淮海居士长短句》",
-   "C": "《珠玉词》",
-   "D": "《人间词》"
+   "B": "《珠玉词》",
+   "C": "《人间词》",
+   "D": "《淮海居士长短句》"
   },
-  "answer": "B",
+  "answer": "D",
   "source": "answered",
   "dupCount": 3,
   "altAnswers": [
    "B",
    "D"
   ],
-  "answer_text": "《淮海居士长短句》"
+  "answer_text": "《淮海居士长短句》",
+  "verified": true
  },
  {
   "qtype": "mcq",
@@ -2028,12 +2046,12 @@
   "no": 21,
   "stem": "《复仇》运用的文学手法主要是",
   "options": {
-   "A": "浪漫主义",
-   "B": "象征主义",
+   "A": "象征主义",
+   "B": "批判现实主义",
    "C": "现实主义",
-   "D": "批判现实主义"
+   "D": "浪漫主义"
   },
-  "answer": "B",
+  "answer": "A",
   "source": "answered",
   "dupCount": 3,
   "altAnswers": [
@@ -2041,7 +2059,8 @@
    "A",
    "C"
   ],
-  "answer_text": "象征主义"
+  "answer_text": "象征主义",
+  "verified": true
  },
  {
   "qtype": "mcq",
@@ -2067,12 +2086,12 @@
   "no": 30,
   "stem": "《楚辞·渔父》的语言形式特点是",
   "options": {
-   "A": "赋体",
-   "B": "白话",
-   "C": "骈散相间",
+   "A": "白话",
+   "B": "骈散相间",
+   "C": "赋体",
    "D": "骈体"
   },
-  "answer": "C",
+  "answer": "B",
   "source": "answered",
   "dupCount": 3,
   "altAnswers": [
@@ -2088,18 +2107,19 @@
   "stem": "《一只特立独行的猪》属于哪种文体？",
   "options": {
    "A": "散文诗",
-   "B": "喜剧",
+   "B": "思想性随笔",
    "C": "科普文章",
-   "D": "思想性随笔"
+   "D": "喜剧"
   },
-  "answer": "D",
+  "answer": "B",
   "source": "answered",
   "dupCount": 2,
   "altAnswers": [
    "D",
    "A"
   ],
-  "answer_text": "思想性随笔"
+  "answer_text": "思想性随笔",
+  "verified": true
  },
  {
   "qtype": "mcq",
@@ -2142,19 +2162,20 @@
   "no": 37,
   "stem": "下列作品不属于叙事诗的是",
   "options": {
-   "A": "李商隐《无题》",
-   "B": "白居易《长恨歌》",
+   "A": "白居易《长恨歌》",
+   "B": "杜甫《丹青引赠曹将军霸》",
    "C": "王维《老将行》",
-   "D": "杜甫《丹青引赠曹将军霸》"
+   "D": "李商隐《无题》"
   },
-  "answer": "A",
+  "answer": "D",
   "source": "answered",
   "dupCount": 2,
   "altAnswers": [
    "A",
    "C"
   ],
-  "answer_text": "李商隐《无题》"
+  "answer_text": "李商隐《无题》",
+  "verified": true
  },
  {
   "qtype": "mcq",
@@ -2479,18 +2500,19 @@
   "no": 21,
   "stem": "( )是沈从文30年代散文的代表作。",
   "options": {
-   "A": "《柏子》",
-   "B": "《边城》",
-   "C": "《受戒》",
-   "D": "《湘行散记》"
+   "A": "《受戒》",
+   "B": "《湘行散记》",
+   "C": "《柏子》",
+   "D": "《边城》"
   },
-  "answer": "D",
+  "answer": "B",
   "source": "answered",
   "dupCount": 1,
   "altAnswers": [
    "D"
   ],
-  "answer_text": "《湘行散记》"
+  "answer_text": "《湘行散记》",
+  "verified": true
  },
  {
   "qtype": "mcq",
@@ -2734,12 +2756,12 @@
   "no": 18,
   "stem": "“人没有苦闷，没有矛盾，就不会有进步”，“没有矛盾的一片恬静只是一个崇高的理想”，傅雷说这话的意思是",
   "options": {
-   "A": "逃避矛盾的心态是不对的",
-   "B": "证明一个人生规律",
-   "C": "说明一个辩证法的道理",
-   "D": "应该把矛盾和苦闷化作进步的动力"
+   "A": "应该把矛盾和苦闷化作进步的动力",
+   "B": "说明一个辩证法的道理",
+   "C": "逃避矛盾的心态是不对的",
+   "D": "证明一个人生规律"
   },
-  "answer": "D",
+  "answer": "A",
   "source": "answered",
   "dupCount": 1,
   "altAnswers": [
@@ -2755,16 +2777,17 @@
   "options": {
    "A": "棒喝",
    "B": "旁观",
-   "C": "赏鉴",
-   "D": "毫无动作"
+   "C": "毫无动作",
+   "D": "赏鉴"
   },
-  "answer": "D",
+  "answer": "C",
   "source": "answered",
   "dupCount": 2,
   "altAnswers": [
    "D"
   ],
-  "answer_text": "毫无动作"
+  "answer_text": "毫无动作",
+  "verified": true
  },
  {
   "qtype": "mcq",
@@ -3007,8 +3030,8 @@
   "stem": "《知音》是《文心雕龙》的第48篇，是关于",
   "options": {
    "A": "文学起源论",
-   "B": "文学创作论",
-   "C": "文学结构论",
+   "B": "文学结构论",
+   "C": "文学创作论",
    "D": "文学批评和鉴赏论"
   },
   "answer": "D",
@@ -3017,7 +3040,8 @@
   "altAnswers": [
    "D"
   ],
-  "answer_text": "文学批评和鉴赏论"
+  "answer_text": "文学批评和鉴赏论",
+  "verified": true
  },
  {
   "qtype": "mcq",
@@ -3170,36 +3194,38 @@
   "no": 25,
   "stem": "《萧红墓畔口占》一诗的基点和最主要的感情基调是",
   "options": {
-   "A": "哀痛",
-   "B": "寂寞",
-   "C": "愤慨",
-   "D": "惋惜"
+   "A": "寂寞",
+   "B": "惋惜",
+   "C": "哀痛",
+   "D": "愤慨"
   },
-  "answer": "B",
+  "answer": "A",
   "source": "answered",
   "dupCount": 1,
   "altAnswers": [
    "B"
   ],
-  "answer_text": "寂寞"
+  "answer_text": "寂寞",
+  "verified": true
  },
  {
   "qtype": "mcq",
   "no": 27,
   "stem": "《别赋》中摹写了不同离怨的不同特征，共有",
   "options": {
-   "A": "5种",
-   "B": "6种",
-   "C": "7种",
-   "D": "8种"
+   "A": "7种",
+   "B": "8种",
+   "C": "6种",
+   "D": "5种"
   },
-  "answer": "C",
+  "answer": "A",
   "source": "answered",
   "dupCount": 1,
   "altAnswers": [
    "C"
   ],
-  "answer_text": "7种"
+  "answer_text": "7种",
+  "verified": true
  },
  {
   "qtype": "mcq",
@@ -3460,18 +3486,19 @@
   "no": 20,
   "stem": "下面属于雷海宗的作品是",
   "options": {
-   "A": "西洋文化史纲要",
-   "B": "中国哲学史",
-   "C": "中国三百年学术史",
-   "D": "国学大纲"
+   "A": "国学大纲",
+   "B": "中国三百年学术史",
+   "C": "西洋文化史纲要",
+   "D": "中国哲学史"
   },
-  "answer": "A",
+  "answer": "C",
   "source": "answered",
   "dupCount": 2,
   "altAnswers": [
    "A"
   ],
-  "answer_text": "西洋文化史纲要"
+  "answer_text": "西洋文化史纲要",
+  "verified": true
  },
  {
   "qtype": "mcq",
@@ -3698,9 +3725,9 @@
   "stem": "在国会演讲中，丘吉尔说，“我所能奉献的没有其他，只有热血、辛劳、汗水与眼泪。”在这里，“热血、辛劳、汗水与眼泪”一组词是 的修辞方法。",
   "options": {
    "A": "排比",
-   "B": "比喻",
+   "B": "夸张",
    "C": "借代",
-   "D": "夸张"
+   "D": "比喻"
   },
   "answer": "C",
   "source": "answered",
@@ -3770,18 +3797,19 @@
   "no": 34,
   "stem": "陈省身强调他曾经常和爱因斯坦见面，其目的可能是",
   "options": {
-   "A": "暗示中西文化互相融会的价值；",
-   "B": "暗示范增作品的重大价值；",
-   "C": "说明爱因斯坦博学；",
-   "D": "说明自己和爱因斯坦的关系。"
+   "A": "说明爱因斯坦博学；",
+   "B": "说明自己和爱因斯坦的关系。",
+   "C": "暗示中西文化互相融会的价值；",
+   "D": "暗示范增作品的重大价值；"
   },
-  "answer": "A",
+  "answer": "C",
   "source": "answered",
   "dupCount": 2,
   "altAnswers": [
    "A"
   ],
-  "answer_text": "暗示中西文化互相融会的价值；"
+  "answer_text": "暗示中西文化互相融会的价值；",
+  "verified": true
  },
  {
   "qtype": "mcq",
@@ -3842,18 +3870,19 @@
   "no": 5,
   "stem": "《渐》的主旨是阐发",
   "options": {
-   "A": "人生的短暂，时间是人生的最终主宰",
+   "A": "事物的变迁是永恒的",
    "B": "珍惜时间，黄金时代一去不复返",
-   "C": "事物的变迁是永恒的",
-   "D": "时间其实与人生价值密切相关"
+   "C": "时间其实与人生价值密切相关",
+   "D": "人生的短暂，时间是人生的最终主宰"
   },
-  "answer": "A",
+  "answer": "D",
   "source": "answered",
   "dupCount": 1,
   "altAnswers": [
    "A"
   ],
-  "answer_text": "人生的短暂，时间是人生的最终主宰"
+  "answer_text": "人生的短暂，时间是人生的最终主宰",
+  "verified": true
  },
  {
   "qtype": "mcq",
@@ -4004,20 +4033,23 @@
  {
   "qtype": "mcq",
   "no": 33,
-  "stem": "《楚辞·渔夫》中所采用的文学手法是： A. 虚拟对白B. 拟人状物C. 忠实于现实的叙事手法D. 上述三种的综合 37.在《贺新郎（“把酒长亭说”）》，诗人提到“铸就而今相思错”，以下对“错”字的解释中，错误的一项是",
+  "stem": "《楚辞·渔夫》中所采用的文学手法是( )",
   "options": {
-   "A": "错字原指错刀。",
-   "B": "错字的原意是指一种古代钱币。",
-   "C": "错字是指诗人与朋友之间彼此错过。",
-   "D": "错字语义双关。"
+   "A": "忠实于现实的叙事手法",
+   "B": "上述三种的综合",
+   "C": "拟人状物",
+   "D": "虚拟对白"
   },
-  "answer": "C",
+  "answer": "D",
   "source": "answered",
   "dupCount": 1,
   "altAnswers": [
-   "C"
+   "C",
+   "错字是指诗人与朋友之间彼此错过。",
+   "虚拟对白"
   ],
-  "answer_text": "错字是指诗人与朋友之间彼此错过。"
+  "answer_text": "虚拟对白",
+  "verified": true
  },
  {
   "qtype": "mcq",
@@ -4154,38 +4186,39 @@
  {
   "qtype": "mcq",
   "no": 26,
-  "stem": "在《北京大学月刊发刊词》一文中，“共同研究学术之机关”的基本含义是 A. 强调大学的教育职能；B. 强调大学的批判功能；C. 强调大学的科学职能；D. 强调大的 40.王小波的散文代表作有",
+  "stem": "在《北京大学月刊发刊词》一文中，“共同研究学术之机关”的基本含义是( )",
   "options": {
-   "A": "黄金时代",
-   "B": "白银时代",
-   "C": "青铜时代",
-   "D": "我的精神家园"
+   "A": "强调大学的教育职能",
+   "B": "强调大学的批判功能",
+   "C": "强调大学的科学职能"
   },
-  "answer": "D",
-  "source": "answered",
+  "answer": "C",
+  "source": "repair",
   "dupCount": 1,
   "altAnswers": [
    "D"
   ],
-  "answer_text": "我的精神家园"
+  "answer_text": "强调大学的科学职能",
+  "verified": true
  },
  {
   "qtype": "mcq",
   "no": 1,
-  "stem": "25分） 11.在描述百姓对齐王好乐和田猎的两种不同反应时，为了增强说服力和感染力，孟子采用的手法是 A. 巧设悬念B. 重章叠句C. 场景烘托D. 渲染夸张 39.《鸭窠围的夜》一文的主要表现手法是",
+  "stem": "在描述百姓对齐王好乐和田猎的两种不同反应时，为了增强说服力和感染力，孟子采用的手法是( )",
   "options": {
-   "A": "叙述",
-   "B": "描写",
-   "C": "议论",
-   "D": "抒情"
+   "A": "巧设悬念",
+   "B": "重章叠句",
+   "C": "场景烘托",
+   "D": "渲染夸张"
   },
-  "answer": "A",
-  "source": "answered",
+  "answer": "B",
+  "source": "repair",
   "dupCount": 1,
   "altAnswers": [
    "A"
   ],
-  "answer_text": "叙述"
+  "answer_text": "重章叠句",
+  "verified": true
  },
  {
   "qtype": "mcq",
@@ -4244,20 +4277,23 @@
  {
   "qtype": "mcq",
   "no": 22,
-  "stem": "具有“用诸多极具体的人生现象和故事，说明一个抽象的道理”这一特点的文章是 A. 钱锺书《一个偏见》B. 张爱玲《天才梦》C. 张承志《荒芜英雄路》D. 丰子恺《渐》 33.诗集《灾难的岁月》的作者是",
+  "stem": "具有“用诸多极具体的人生现象和故事，说明一个抽象的道理”这一特点的文章是( )",
   "options": {
-   "A": "罗大佑",
-   "B": "萧红",
-   "C": "戴望舒",
-   "D": "冯至"
+   "A": "张承志《荒芜英雄路》",
+   "B": "张爱玲《天才梦》",
+   "C": "丰子恺《渐》",
+   "D": "钱锺书《一个偏见》"
   },
   "answer": "C",
   "source": "answered",
   "dupCount": 1,
   "altAnswers": [
-   "C"
+   "C",
+   "戴望舒",
+   "丰子恺《渐》"
   ],
-  "answer_text": "戴望舒"
+  "answer_text": "丰子恺《渐》",
+  "verified": true
  },
  {
   "qtype": "mcq",
@@ -4492,7 +4528,8 @@
   "altAnswers": [
    "D"
   ],
-  "answer_text": "《槐园梦忆》"
+  "answer_text": "《槐园梦忆》",
+  "verified": true
  },
  {
   "qtype": "mcq",
@@ -4739,17 +4776,23 @@
   "fused": true
  },
  {
-  "qtype": "inline",
+  "qtype": "mcq",
   "no": 16,
   "stem": "《热血、辛劳、汗水与眼泪》结尾：此时此刻，我认为我有权要求所有人的支持，并且我要说，让我们团结一致，共赴国难吧。",
-  "options": null,
-  "answer": null,
+  "options": {
+   "A": "沉重和危险",
+   "B": "无畏和坚定；",
+   "C": "充分准备牺牲；",
+   "D": "疑虑和勇敢。"
+  },
+  "answer": "B",
   "source": "inline",
   "raw": "《热血、辛劳、汗水与眼泪》结尾：此时此刻，我认为我有权要求所有人的支持，并且我要说，让我们团结一致，共赴国难吧。",
   "dupCount": 1,
   "altAnswers": [],
-  "answer_text": null,
-  "fused": true
+  "answer_text": "无畏和坚定；",
+  "fused": true,
+  "verified": true
  },
  {
   "qtype": "inline",
@@ -6724,12 +6767,12 @@
   "no": 26,
   "stem": "《现象七十二变》中，“孙悟空”的七十二变有何象征？",
   "options": {
-   "A": "黄花岗七十二烈士",
-   "B": "时代的多变",
-   "C": "没有意义，是为了配合歌曲的旋律而加入的",
-   "D": "现代人中的聪明人"
+   "A": "没有意义，是为了配合歌曲的旋律而加入的",
+   "B": "现代人中的聪明人",
+   "C": "时代的多变",
+   "D": "黄花岗七十二烈士"
   },
-  "answer": "B",
+  "answer": "C",
   "source": "inline",
   "raw": "《现象七十二变》中，“孙悟空”的七十二变有何象征？时代的多变",
   "dupCount": 2,
@@ -6837,17 +6880,23 @@
   "fused": true
  },
  {
-  "qtype": "inline",
+  "qtype": "mcq",
   "no": 35,
   "stem": "《一个偏见》中的“偏见”是指人声是一种污染",
-  "options": null,
-  "answer": null,
+  "options": {
+   "A": "人声是一种污染",
+   "B": "人声其实可以视作无声",
+   "C": "自然界的声音最动听",
+   "D": "人声有如音乐般美妙"
+  },
+  "answer": "A",
   "source": "inline",
   "raw": "《一个偏见》中的“偏见”是指人声是一种污染",
   "dupCount": 2,
   "altAnswers": [],
-  "answer_text": null,
-  "fused": true
+  "answer_text": "人声是一种污染",
+  "fused": true,
+  "verified": true
  },
  {
   "qtype": "inline",
@@ -7076,9 +7125,9 @@
   "stem": "《世说新语》中主要记载了主要记述魏晋时期的士族阶层人物轶事",
   "options": {
    "A": "主要记述魏晋时期的士族阶层人物的轶事",
-   "B": "主要记述魏晋时期主要的儒者、大臣的故事",
-   "C": "主要记述魏晋时期的士族阶层人物的言论",
-   "D": "主要记述魏晋时期的社会上流行的趣闻轶事"
+   "B": "主要记述魏晋时期的士族阶层人物的言论",
+   "C": "主要记述魏晋时期的社会上流行的趣闻轶事",
+   "D": "主要记述魏晋时期主要的儒者、大臣的故事"
   },
   "answer": "A",
   "source": "inline",
@@ -7472,12 +7521,12 @@
   "no": 87,
   "stem": "《金岳霖先生》一文中没有提到的人是张伯苓",
   "options": {
-   "A": "萧珊",
-   "B": "张伯苓",
-   "C": "沈从文",
+   "A": "沈从文",
+   "B": "萧珊",
+   "C": "张伯苓",
    "D": "王浩"
   },
-  "answer": "B",
+  "answer": "C",
   "source": "inline",
   "raw": "《金岳霖先生》一文中没有提到的人是张伯苓",
   "dupCount": 2,
@@ -7733,17 +7782,23 @@
   "fused": true
  },
  {
-  "qtype": "inline",
+  "qtype": "mcq",
   "no": 106,
   "stem": "下列选项中善于写作无题诗的唐代诗人是李商隐",
-  "options": null,
-  "answer": null,
+  "options": {
+   "A": "李贺",
+   "B": "李商隐",
+   "C": "贾岛",
+   "D": "杜牧"
+  },
+  "answer": "B",
   "source": "inline",
   "raw": "下列选项中善于写作无题诗的唐代诗人是李商隐",
   "dupCount": 2,
   "altAnswers": [],
-  "answer_text": null,
-  "fused": true
+  "answer_text": "李商隐",
+  "fused": true,
+  "verified": true
  },
  {
   "qtype": "inline",
@@ -8188,17 +8243,23 @@
   "fused": true
  },
  {
-  "qtype": "inline",
+  "qtype": "mcq",
   "no": 141,
   "stem": "下面的表述里面不符合《一个偏见》的见解的是偏见使得人与人很难沟通",
-  "options": null,
-  "answer": null,
+  "options": {
+   "A": "偏见有时候成为伪装的思想",
+   "B": "偏见使得人与人很难沟通",
+   "C": "偏见是难以摆脱的，所以要宽容",
+   "D": "偏见是和思想相伴随的"
+  },
+  "answer": "B",
   "source": "inline",
   "raw": "下面的表述里面不符合《一个偏见》的见解的是偏见使得人与人很难沟通",
   "dupCount": 2,
   "altAnswers": [],
-  "answer_text": null,
-  "fused": true
+  "answer_text": "偏见使得人与人很难沟通",
+  "fused": true,
+  "verified": true
  },
  {
   "qtype": "inline",
@@ -8428,17 +8489,23 @@
   "fused": true
  },
  {
-  "qtype": "inline",
+  "qtype": "mcq",
   "no": 159,
   "stem": "所谓“女孩子的花”，乃指传说中有一位名叫百叶的女孩变化而来的重瓣水仙花",
-  "options": null,
-  "answer": null,
+  "options": {
+   "A": "牵牛花",
+   "B": "丁香花",
+   "C": "水仙花",
+   "D": "荷花"
+  },
+  "answer": "C",
   "source": "inline",
   "raw": "所谓“女孩子的花”，乃指传说中有一位名叫百叶的女孩变化而来的重瓣水仙花",
   "dupCount": 2,
   "altAnswers": [],
-  "answer_text": null,
-  "fused": true
+  "answer_text": "水仙花",
+  "fused": true,
+  "verified": true
  },
  {
   "qtype": "inline",
@@ -8794,17 +8861,23 @@
   "fused": true
  },
  {
-  "qtype": "inline",
+  "qtype": "mcq",
   "no": 190,
   "stem": "前人形容文思特色为“能飞”的作品是《庄子》",
-  "options": null,
-  "answer": null,
+  "options": {
+   "A": "《老子》",
+   "B": "《孟子》",
+   "C": "《庄子》",
+   "D": "《论语》"
+  },
+  "answer": "C",
   "source": "inline",
   "raw": "前人形容文思特色为“能飞”的作品是《庄子》",
   "dupCount": 2,
   "altAnswers": [],
-  "answer_text": null,
-  "fused": true
+  "answer_text": "《庄子》",
+  "fused": true,
+  "verified": true
  },
  {
   "qtype": "inline",
@@ -8824,10 +8897,10 @@
   "no": 192,
   "stem": "“乡愁是一枚小小的邮票”，这是名诗《乡愁》中的诗句。《乡愁》的作者是余光中",
   "options": {
-   "A": "艾青",
-   "B": "罗大佑",
+   "A": "罗大佑",
+   "B": "戴望舒",
    "C": "余光中",
-   "D": "戴望舒"
+   "D": "艾青"
   },
   "answer": "C",
   "source": "inline",
@@ -8843,12 +8916,12 @@
   "no": 193,
   "stem": "高适《燕歌行》中“天子非常赐颜色”一句中，“颜色”的意思是面子、光彩",
   "options": {
-   "A": "彩色的朝服",
-   "B": "面子、光彩",
-   "C": "脸色",
-   "D": "彩色锦缎"
+   "A": "面子、光彩",
+   "B": "彩色锦缎",
+   "C": "彩色的朝服",
+   "D": "脸色"
   },
-  "answer": "B",
+  "answer": "A",
   "source": "inline",
   "raw": "高适《燕歌行》中“天子非常赐颜色”一句中，“颜色”的意思是面子、光彩",
   "dupCount": 2,
@@ -8897,17 +8970,23 @@
   "fused": true
  },
  {
-  "qtype": "inline",
+  "qtype": "mcq",
   "no": 197,
-  "stem": "《野生陶先生二三事》一文中有这样一段：这有时使我想到《论语》上的话，一处是：“躬行君子，则吾未之有得。”一处是：“学而不厌，诲人不倦，何有于我哉！”两处都是孔老夫子认为虽心向往之而力有未能的，可是叶圣陶先生却偏偏做到了。这一对主要使用的修辞手段是引用",
-  "options": null,
-  "answer": null,
+  "stem": "《叶圣陶先生二三事》一文中有这样一段：这有时使我想到《论语》上的话，一处是：“躬行君子，则吾未之有得。”一处是：“学而不厌，诲人不倦，何有于我哉！”两处都是孔老夫子认为虽心向往之而力有未能的，可是叶圣陶先生却偏偏做到了。这一对主要使用的修辞手段是引用",
+  "options": {
+   "A": "对比",
+   "B": "比照",
+   "C": "引用",
+   "D": "比拟"
+  },
+  "answer": "C",
   "source": "inline",
   "raw": "《野生陶先生二三事》一文中有这样一段：这有时使我想到《论语》上的话，一处是：“躬行君子，则吾未之有得。”一处是：“学而不厌，诲人不倦，何有于我哉！”两处都是孔老夫子认为虽心向往之而力有未能的，可是叶圣陶先生却偏偏做到了。这一对主要使用的修辞手段是引用",
   "dupCount": 2,
   "altAnswers": [],
-  "answer_text": null,
-  "fused": true
+  "answer_text": "引用",
+  "fused": true,
+  "verified": true
  },
  {
   "qtype": "inline",
@@ -8949,17 +9028,23 @@
   "fused": true
  },
  {
-  "qtype": "inline",
+  "qtype": "mcq",
   "no": 201,
   "stem": "范曾的《庄子显灵记》属于诗剧",
-  "options": null,
-  "answer": null,
+  "options": {
+   "A": "话剧",
+   "B": "白话小说",
+   "C": "诗剧",
+   "D": "文言小说"
+  },
+  "answer": "C",
   "source": "inline",
   "raw": "范曾的《庄子显灵记》属于诗剧",
   "dupCount": 2,
   "altAnswers": [],
-  "answer_text": null,
-  "fused": true
+  "answer_text": "诗剧",
+  "fused": true,
+  "verified": true
  },
  {
   "qtype": "inline",
@@ -9833,17 +9918,23 @@
   "fused": true
  },
  {
-  "qtype": "inline",
+  "qtype": "mcq",
   "no": 268,
   "stem": "对《临江仙（夜归临皋）》中“长恨此身非我有”一句的解释有误的是这种思想出自佛教四大皆空的看法",
-  "options": null,
-  "answer": null,
+  "options": {
+   "A": "这种思想出自佛教四大皆空的看法。",
+   "B": "我的命运不掌握在自己手中",
+   "C": "人生中有很多不可预料之事。",
+   "D": "这种思想源于庄子，是道家的思想。"
+  },
+  "answer": "A",
   "source": "inline",
   "raw": "对《临江仙（夜归临皋）》中“长恨此身非我有”一句的解释有误的是这种思想出自佛教四大皆空的看法",
   "dupCount": 2,
   "altAnswers": [],
-  "answer_text": null,
-  "fused": true
+  "answer_text": "这种思想出自佛教四大皆空的看法。",
+  "fused": true,
+  "verified": true
  },
  {
   "qtype": "inline",
@@ -9950,17 +10041,23 @@
   "fused": true
  },
  {
-  "qtype": "inline",
+  "qtype": "mcq",
   "no": 278,
   "stem": "对苏轼生平叙述不正确的一项是苏轼晚年被贬官到杭州",
-  "options": null,
-  "answer": null,
+  "options": {
+   "A": "元丰二年，因“乌台诗案”，责授黄州（今湖北黄冈）团练副使",
+   "B": "字子瞻，号东坡居士",
+   "C": "苏轼对佛、道两教皆有深入研究",
+   "D": "苏轼晚年被贬官到杭州"
+  },
+  "answer": "D",
   "source": "inline",
   "raw": "对苏轼生平叙述不正确的一项是苏轼晚年被贬官到杭州",
   "dupCount": 2,
   "altAnswers": [],
-  "answer_text": null,
-  "fused": true
+  "answer_text": "苏轼晚年被贬官到杭州",
+  "fused": true,
+  "verified": true
  },
  {
   "qtype": "inline",
@@ -10142,10 +10239,10 @@
   "no": 292,
   "stem": "晏殊《蝶恋花》词中有“斜光到晓穿朱户”，其中“朱户”是指红色的大门，指富贵人员",
   "options": {
-   "A": "红色的装饰，指青楼",
+   "A": "红色的墙壁，指富贵人家",
    "B": "朱姓人家，借指贵族",
    "C": "红色的大门，指富贵人家",
-   "D": "红色的墙壁，指富贵人家"
+   "D": "红色的装饰，指青楼"
   },
   "answer": "C",
   "source": "inline",
@@ -10215,17 +10312,23 @@
   "verified": true
  },
  {
-  "qtype": "inline",
+  "qtype": "mcq",
   "no": 297,
   "stem": "《什么能从我们身上脱落》一诗作者借沉思自然界的“蜕化”现象，歌颂生命的新生和永恒",
-  "options": null,
-  "answer": null,
+  "options": {
+   "A": "生存与死亡",
+   "B": "现在与将来",
+   "C": "人与自然",
+   "D": "生命的新生和永恒"
+  },
+  "answer": "D",
   "source": "inline",
   "raw": "《什么能从我们身上脱落》一诗作者借沉思自然界的“蜕化”现象，歌颂生命的新生和永恒",
   "dupCount": 2,
   "altAnswers": [],
-  "answer_text": null,
-  "fused": true
+  "answer_text": "生命的新生和永恒",
+  "fused": true,
+  "verified": true
  },
  {
   "qtype": "inline",
@@ -10359,17 +10462,23 @@
   "fused": true
  },
  {
-  "qtype": "inline",
+  "qtype": "mcq",
   "no": 310,
   "stem": "《孟子·梁惠王下》中：“独乐乐，与人乐乐”，其中第一个“乐”为动词",
-  "options": null,
-  "answer": null,
+  "options": {
+   "A": "名词；",
+   "B": "形容词；",
+   "C": "动词；",
+   "D": "副词；"
+  },
+  "answer": "C",
   "source": "inline",
   "raw": "《孟子·梁惠王下》中：“独乐乐，与人乐乐”，其中第一个“乐”为动词",
   "dupCount": 2,
   "altAnswers": [],
-  "answer_text": null,
-  "fused": true
+  "answer_text": "动词；",
+  "fused": true,
+  "verified": true
  },
  {
   "qtype": "inline",
@@ -11148,18 +11257,24 @@
   "fused": true
  },
  {
-  "qtype": "inline",
+  "qtype": "mcq",
   "no": 368,
   "stem": "在《我有一个梦想》中，作者主张所有人都应该享有若干“不可让渡”的权利，但他没有提到下面哪一种？",
-  "options": null,
-  "answer": "言论权",
+  "options": {
+   "A": "自由权",
+   "B": "言论权",
+   "C": "生存权",
+   "D": "追求幸福权"
+  },
+  "answer": "B",
   "source": "inline",
   "raw": "在《我有一个梦想》中，作者主张所有人都应该享有若干“不可让渡”的权利，但他没有提到下面哪一种？言论权",
   "dupCount": 2,
   "altAnswers": [
    "言论权"
   ],
-  "answer_text": "言论权"
+  "answer_text": "言论权",
+  "verified": true
  },
  {
   "qtype": "inline",
@@ -11179,12 +11294,12 @@
   "no": 1,
   "stem": "《序二篇》是为范曾的( )",
   "options": {
-   "A": "诗剧《庄子显灵记》",
+   "A": "诗集《庄子显灵记》",
    "B": "话剧《庄子显灵记》",
-   "C": "诗集《庄子显灵记》",
-   "D": "历史剧《庄子显灵记》"
+   "C": "历史剧《庄子显灵记》",
+   "D": "诗剧《庄子显灵记》"
   },
-  "answer": "A",
+  "answer": "D",
   "source": "inline",
   "raw": "《序二篇》是为范曾的( )所作。",
   "dupCount": 1,
@@ -11349,12 +11464,12 @@
   "no": 19,
   "stem": "下列属于“语言的陷阱”的是：( )",
   "options": {
-   "A": "说“绕口令”",
+   "A": "写很美的求爱信",
    "B": "精神分析治疗中的语言倾诉",
-   "C": "写很美的求爱信",
-   "D": "结婚的时候人们差不多都想起“洞房花烛夜，金榜题名时”"
+   "C": "结婚的时候人们差不多都想起“洞房花烛夜，金榜题名时”",
+   "D": "说“绕口令”"
   },
-  "answer": "D",
+  "answer": "C",
   "source": "inline",
   "raw": "下列属于“语言的陷阱”的是：( )",
   "dupCount": 1,
@@ -11439,10 +11554,10 @@
   "no": 25,
   "stem": "周作人的文集，常常以“( )",
   "options": {
-   "A": "饮冰室",
+   "A": "雅舍",
    "B": "知堂",
-   "C": "随园",
-   "D": "雅舍"
+   "C": "饮冰室",
+   "D": "随园"
   },
   "answer": "B",
   "source": "inline",
@@ -11479,12 +11594,12 @@
   "no": 27,
   "stem": "《我学国文的经验》的文风是( )",
   "options": {
-   "A": "平淡自然",
-   "B": "冷峻深刻",
+   "A": "冷峻深刻",
+   "B": "平淡自然",
    "C": "飘逸潇洒",
    "D": "阴柔妩媚"
   },
-  "answer": "A",
+  "answer": "B",
   "source": "inline",
   "raw": "《我学国文的经验》的文风是( )",
   "dupCount": 1,
@@ -11688,17 +11803,23 @@
   "fused": true
  },
  {
-  "qtype": "inline",
+  "qtype": "mcq",
   "no": 46,
   "stem": "贾平凹笔下的“秦腔”，象征了一种( )",
-  "options": null,
-  "answer": null,
+  "options": {
+   "A": "自然、生动、质朴的西北生活；",
+   "B": "乡村文化的强大。",
+   "C": "现代生命力的冲动；",
+   "D": "传统文化的魅力；"
+  },
+  "answer": "A",
   "source": "inline",
   "raw": "贾平凹笔下的“秦腔”，象征了一种( )",
   "dupCount": 1,
   "altAnswers": [],
-  "answer_text": null,
-  "fused": true
+  "answer_text": "自然、生动、质朴的西北生活；",
+  "fused": true,
+  "verified": true
  },
  {
   "qtype": "inline",
@@ -11849,17 +11970,23 @@
   "fused": true
  },
  {
-  "qtype": "inline",
+  "qtype": "mcq",
   "no": 64,
   "stem": "个狗主义的作者是( )",
-  "options": null,
-  "answer": null,
+  "options": {
+   "A": "周涛",
+   "B": "韩美林",
+   "C": "刘小枫",
+   "D": "韩少功"
+  },
+  "answer": "D",
   "source": "inline",
   "raw": "个狗主义的作者是( )",
   "dupCount": 1,
   "altAnswers": [],
-  "answer_text": null,
-  "fused": true
+  "answer_text": "韩少功",
+  "fused": true,
+  "verified": true
  },
  {
   "qtype": "inline",
@@ -11961,17 +12088,23 @@
   "verified": true
  },
  {
-  "qtype": "inline",
+  "qtype": "mcq",
   "no": 79,
   "stem": "《雅舍小品》的作者是( )",
-  "options": null,
-  "answer": null,
+  "options": {
+   "A": "周作人",
+   "B": "丰子恺",
+   "C": "梁启超",
+   "D": "梁实秋"
+  },
+  "answer": "D",
   "source": "inline",
   "raw": "《雅舍小品》的作者是( )",
   "dupCount": 1,
   "altAnswers": [],
-  "answer_text": null,
-  "fused": true
+  "answer_text": "梁实秋",
+  "fused": true,
+  "verified": true
  },
  {
   "qtype": "inline",
@@ -12125,17 +12258,23 @@
   "verified": true
  },
  {
-  "qtype": "inline",
+  "qtype": "mcq",
   "no": 99,
   "stem": "张中行在《叶圣陶先生二三事》一文中提到，叶圣陶提倡“写话”，意思是（ ）",
-  "options": null,
-  "answer": null,
+  "options": {
+   "A": "要按照口语原则进行写作",
+   "B": "作文要用语简洁，随便自然",
+   "C": "作文如同说话一样准确真实",
+   "D": "追求白话文的通俗，反对文言文的生涩"
+  },
+  "answer": "B",
   "source": "inline",
   "raw": "张中行在《叶圣陶先生二三事》一文中提到，叶圣陶提倡“写话”，意思是（ ）",
   "dupCount": 1,
   "altAnswers": [],
-  "answer_text": null,
-  "fused": true
+  "answer_text": "作文要用语简洁，随便自然",
+  "fused": true,
+  "verified": true
  },
  {
   "qtype": "inline",
@@ -12155,12 +12294,12 @@
   "no": 101,
   "stem": "汪曾祺在《金岳霖先生》中提到闻一多的“灰色旧夹袍”，这是为了说明闻一多的( )",
   "options": {
-   "A": "豪放邋遢；",
-   "B": "傲视权贵。",
+   "A": "傲视权贵。",
+   "B": "贫穷粗俗；",
    "C": "粗心简朴；",
-   "D": "贫穷粗俗；"
+   "D": "豪放邋遢；"
   },
-  "answer": "B",
+  "answer": "A",
   "source": "inline",
   "raw": "汪曾祺在《金岳霖先生》中提到闻一多的“灰色旧夹袍”，这是为了说明闻一多的( )",
   "dupCount": 1,
@@ -12247,17 +12386,23 @@
   "fused": true
  },
  {
-  "qtype": "inline",
+  "qtype": "mcq",
   "no": 116,
   "stem": "《李鸿章办外交》中所引掌故名著是( )",
-  "options": null,
-  "answer": null,
+  "options": {
+   "A": "《清园论学集》",
+   "B": "《郎潜纪闻》",
+   "C": "《春冰室野乘》",
+   "D": "《清园夜读》"
+  },
+  "answer": "C",
   "source": "inline",
   "raw": "《李鸿章办外交》中所引掌故名著是( )",
   "dupCount": 1,
   "altAnswers": [],
-  "answer_text": null,
-  "fused": true
+  "answer_text": "《春冰室野乘》",
+  "fused": true,
+  "verified": true
  },
  {
   "qtype": "inline",
@@ -12436,12 +12581,12 @@
   "no": 137,
   "stem": "“先生之著述，或有时而不章。先生之学说，或有时而可商。”，这句话的意思是指( )",
   "options": {
-   "A": "王国维的文章学问并非全是真理；",
-   "B": "王国维的文章学问很差；",
-   "C": "王国维的文章学问没有达到最高境界；",
-   "D": "王国维的文章学问很好；"
+   "A": "王国维的文章学问很差；",
+   "B": "王国维的文章学问没有达到最高境界；",
+   "C": "王国维的文章学问并非全是真理；",
+   "D": "王国维的文章学问很好"
   },
-  "answer": "A",
+  "answer": "C",
   "source": "inline",
   "raw": "“先生之著述，或有时而不章。先生之学说，或有时而可商。”，这句话的意思是指( )",
   "dupCount": 1,
@@ -12523,17 +12668,23 @@
   "fused": true
  },
  {
-  "qtype": "inline",
+  "qtype": "mcq",
   "no": 144,
   "stem": "雷海宗提到，“一个人除作专家外，也要作‘人’，并且必须作‘人’。”在这里，“人”的意思可以理解为( )",
-  "options": null,
-  "answer": null,
+  "options": {
+   "A": "有道德的人；",
+   "B": "懂得生活、不专于一科的学者。",
+   "C": "有理想的人；",
+   "D": "人性；"
+  },
+  "answer": "B",
   "source": "inline",
   "raw": "雷海宗提到，“一个人除作专家外，也要作‘人’，并且必须作‘人’。”在这里，“人”的意思可以理解为( )",
   "dupCount": 1,
   "altAnswers": [],
-  "answer_text": null,
-  "fused": true
+  "answer_text": "懂得生活、不专于一科的学者。",
+  "fused": true,
+  "verified": true
  },
  {
   "qtype": "inline",
@@ -12573,12 +12724,12 @@
   "no": 147,
   "stem": "在《赠予今年的大学毕业生》一文中，胡适提出“总得时时寻一两个值得研究的问题！”这是强调( )",
   "options": {
-   "A": "求实证、求真学。",
-   "B": "要关注保持强烈研究治学的兴趣；",
-   "C": "可以多合同仁交流请教；",
-   "D": "在贫乏的环境里面也要刻苦学习；"
+   "A": "可以多合同仁交流请教；",
+   "B": "在贫乏的环境里面也要刻苦学习；",
+   "C": "要关注保持强烈研究治学的兴趣；",
+   "D": "求实证、求真学。"
   },
-  "answer": "B",
+  "answer": "C",
   "source": "inline",
   "raw": "在《赠予今年的大学毕业生》一文中，胡适提出“总得时时寻一两个值得研究的问题！”这是强调( )",
   "dupCount": 1,
@@ -12682,12 +12833,12 @@
   "no": 8,
   "stem": "秦腔是_______的地方戏剧。",
   "options": {
-   "A": "华北地区",
-   "B": "巴蜀地区",
-   "C": "关中地区",
+   "A": "巴蜀地区",
+   "B": "关中地区",
+   "C": "华北地区",
    "D": "东北地区"
   },
-  "answer": "C",
+  "answer": "B",
   "answer_text": "关中地区",
   "source": "exam-u1",
   "dupCount": 1,
@@ -12843,11 +12994,11 @@
   "stem": "《陶庵梦忆》是著名的",
   "options": {
    "A": "乐府诗集",
-   "B": "诗集",
-   "C": "小品文集",
-   "D": "小说集"
+   "B": "小说集",
+   "C": "诗集",
+   "D": "小品文集"
   },
-  "answer": "C",
+  "answer": "D",
   "answer_text": "小品文集",
   "source": "exam-run1",
   "dupCount": 1,
@@ -12858,12 +13009,12 @@
   "no": 25,
   "stem": "下面不属于马克•吐温的作品是",
   "options": {
-   "A": "漂亮朋友；",
+   "A": "密西西比河上。",
    "B": "跳蛙；",
-   "C": "密西西比河上。",
-   "D": "汤姆索耶历险记；"
+   "C": "汤姆索耶历险记；",
+   "D": "漂亮朋友；"
   },
-  "answer": "A",
+  "answer": "D",
   "answer_text": "漂亮朋友；",
   "source": "exam-run1",
   "dupCount": 1,
@@ -13010,6 +13161,134 @@
   "answer": "D",
   "answer_text": "祭文的结束语",
   "source": "exam-run3",
+  "dupCount": 1,
+  "verified": true
+ },
+ {
+  "qtype": "mcq",
+  "no": 29,
+  "stem": "艾青《北方》一诗中描写战争阴云笼罩下的北方国土，主要集中在：",
+  "options": {
+   "A": "诗歌的下半部分",
+   "B": "贯穿诗歌始终",
+   "C": "诗歌的上半部分",
+   "D": "诗歌的结尾部分"
+  },
+  "answer": "C",
+  "answer_text": "诗歌的上半部分",
+  "source": "exam-run3",
+  "dupCount": 1,
+  "verified": true
+ },
+ {
+  "qtype": "mcq",
+  "no": 14,
+  "stem": "《一个偏见》的笔法是",
+  "options": {
+   "A": "调侃中思辨；",
+   "B": "叙述中抒情。",
+   "C": "论证与辩论；",
+   "D": "反思；"
+  },
+  "answer": "A",
+  "answer_text": "调侃中思辨；",
+  "source": "exam-run4",
+  "dupCount": 1,
+  "verified": true
+ },
+ {
+  "qtype": "mcq",
+  "no": 21,
+  "stem": "在《李鸿章办外交》一文中，王元化认为李鸿章在外交场合换衣服是一种：",
+  "options": {
+   "A": "不务实际的外交思想的产物",
+   "B": "在特定历史时期不得不作的选择",
+   "C": "错误的手段正确的效果",
+   "D": "后人之误传，不符合历史"
+  },
+  "answer": "A",
+  "answer_text": "不务实际的外交思想的产物",
+  "source": "exam-run4",
+  "dupCount": 1,
+  "verified": true
+ },
+ {
+  "qtype": "mcq",
+  "no": 24,
+  "stem": "（）这样表述自己的文学理想：“我是想造希腊小庙……这庙供奉的是人性。”",
+  "options": {
+   "A": "张爱玲",
+   "B": "周作人",
+   "C": "鲁迅",
+   "D": "沈从文"
+  },
+  "answer": "D",
+  "answer_text": "沈从文",
+  "source": "exam-run4",
+  "dupCount": 1,
+  "verified": true
+ },
+ {
+  "qtype": "mcq",
+  "no": 27,
+  "stem": "《论语•侍坐篇》中，“莫春者”一句的意思是：",
+  "options": {
+   "A": "莫过于春天",
+   "B": "春天结束以后",
+   "C": "晚春",
+   "D": "初春"
+  },
+  "answer": "C",
+  "answer_text": "晚春",
+  "source": "exam-run4",
+  "dupCount": 1,
+  "verified": true
+ },
+ {
+  "qtype": "mcq",
+  "no": 28,
+  "stem": "下列哪位作者曾经担任过中国的文化部长？",
+  "options": {
+   "A": "王蒙",
+   "B": "王元化",
+   "C": "冯友兰",
+   "D": "蔡元培"
+  },
+  "answer": "A",
+  "answer_text": "王蒙",
+  "source": "exam-run4",
+  "dupCount": 1,
+  "verified": true
+ },
+ {
+  "qtype": "mcq",
+  "no": 29,
+  "stem": "《论语•侍坐篇》中，“吾与点也”中的与的确切解释是：",
+  "options": {
+   "A": "给予",
+   "B": "同意",
+   "C": "连词，无意义",
+   "D": "和"
+  },
+  "answer": "B",
+  "answer_text": "同意",
+  "source": "exam-run4",
+  "dupCount": 1,
+  "verified": true
+ },
+ {
+  "qtype": "mcq",
+  "no": 37,
+  "stem": "马丁·路德·金在《我有一个梦想》中提到，“100年前，一位伟大的美国人──今天我们就站在他象征性的身影下──签署了《解放宣言》”，这是指：",
+  "options": {
+   "A": "华盛顿起草并签署《解奴宣言》；",
+   "B": "华盛顿的《独立宣言》；",
+   "C": "林肯起草并签署《解奴黑奴宣言》。",
+   "D": "弗兰克林的《独立宣言》；"
+  },
+  "answer": "C",
+  "answer_text": "林肯起草并签署《解奴黑奴宣言》。",
+  "source": "exam-run4",
   "dupCount": 1,
   "verified": true
  }
