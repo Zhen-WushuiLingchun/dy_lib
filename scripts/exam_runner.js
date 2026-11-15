@@ -9,7 +9,36 @@ const path = require("path");
 const ROOT = path.join(__dirname, "..");
 const RUNS = path.join(ROOT, "runs");
 const CHROME = process.env.CHROME_PATH || "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe";
-const COOKIE = process.env.EXAM_COOKIE || "";
+const COOKIE_RAW = process.env.EXAM_COOKIE || "";
+
+// EXAM_COOKIE 支持多种粘贴形式，统一解析成 cookie 列表：
+//   1) 纯值：dwerurlxrlzqdlqnnqncnhm2
+//   2) 单条：ASP.NET_SessionId=dwer...
+//   3) 整行 Cookie 头：ASP.NET_SessionId=...; .ASPXAUTH=...
+//   4) 整段 curl（Copy as cURL）：... -H 'Cookie: ASP.NET_SessionId=...; ...'
+function parseCookieInput(raw) {
+  const s = String(raw || "").trim().replace(/^["']|["']$/g, "");
+  if (!s) return { list: [], sessionId: "" };
+  if (!s.includes("=")) return { list: [["ASP.NET_SessionId", s]], sessionId: s };
+  let src = s;
+  const m = s.match(/cookie\s*:\s*([^'"\\]+)/i);
+  if (m) src = m[1];
+  const list = [];
+  const seen = new Set();
+  const re = /([A-Za-z0-9_.\-]+)=([^;'"\s\\]+)/g;
+  let mm;
+  while ((mm = re.exec(src))) {
+    const name = mm[1], value = mm[2];
+    if (!/^(ASP\.NET_SessionId|\.?ASPXAUTH|\.ASPXANONYMOUS|__RequestVerificationToken|JSESSIONID|SESSION|sessionId|token)$/i.test(name)) continue;
+    if (seen.has(name.toLowerCase())) continue;
+    seen.add(name.toLowerCase());
+    list.push([name, value]);
+  }
+  const pair = list.find(p => /^ASP\.NET_SessionId$/i.test(p[0]));
+  return { list, sessionId: pair ? pair[1] : "" };
+}
+const CK = parseCookieInput(COOKIE_RAW);
+const COOKIE = CK.sessionId;
 const HEADLESS = process.env.HEADLESS === "1";
 const HOLD_SEC = parseInt(process.env.HOLD_SEC || "120", 10);
 const TAG = process.argv[2] || "run1";
@@ -19,7 +48,11 @@ const PORT = 9600 + (parseInt(TAG.replace(/\D/g, "") || "1", 10) % 80);
 const PROFILE = path.join(require("os").tmpdir(), `dy-lib-chrome-${TAG}`);
 
 if (!COOKIE) {
-  console.error("缺少 EXAM_COOKIE。请先在浏览器登录 dy.nankai.edu.cn，然后从 DevTools → Application → Cookies 复制 ASP.NET_SessionId。");
+  console.error("缺少 EXAM_COOKIE（或其中没有 ASP.NET_SessionId=）。");
+  console.error("请先在浏览器登录 dy.nankai.edu.cn，然后任选一种粘进来：");
+  console.error("  A) DevTools → Network → 任一请求 → Request Headers → 复制整行 Cookie:");
+  console.error("  B) 右键请求 → Copy → Copy as cURL (bash) → 整段粘贴（会自动提取）");
+  console.error("  C) 或直接运行 node scripts/get_cookie.js（有头 Chrome，登录后自动打印）");
   process.exit(1);
 }
 fs.mkdirSync(OUT, { recursive: true });
@@ -49,18 +82,44 @@ class CDP {
         cdp.send("Page.handleJavaScriptDialog", { accept: true }).catch(() => {});
       }
     });
-    await cdp.send("Network.setCookie", { name: "ASP.NET_SessionId", value: COOKIE.replace(/^ASP\.NET_SessionId=/, ""), domain: "dy.nankai.edu.cn", path: "/", httpOnly: true });
+    const snap = async (name) => {
+      try {
+        const r = await cdp.send("Page.captureScreenshot", { format: "png", captureBeyondViewport: true });
+        fs.writeFileSync(path.join(OUT, name + ".png"), Buffer.from(r.data, "base64"));
+        log(`shot ${name}.png`);
+      } catch (e) { log(`shot err ${name}: ${e.message}`); }
+    };
+    // 点击按钮：先按 id 片段，再按文案正则兜底
+    const clickBy = async (idPart, rxSrc) => {
+      const expr = `(()=>{const els=[...document.querySelectorAll("input[type=button],input[type=submit],button,a")];
+        const byId=els.find(e=>(e.id||"").includes(${JSON.stringify(idPart)}));
+        if(byId){byId.click();return "id:"+byId.id;}
+        const rx=new RegExp(${JSON.stringify(rxSrc)});
+        for(const e of els){const t=(e.value||e.textContent||"").trim();if(t&&t.length<20&&rx.test(t)){e.click();return "txt:"+t;}}
+        return null;})()`;
+      return (await cdp.send("Runtime.evaluate", { expression: expr, returnByValue: true })).result.value;
+    };
+    const getHtml = () => cdp.send("Runtime.evaluate", { expression: "document.documentElement.outerHTML", returnByValue: true }).then(r => r.result.value).catch(() => "");
+    for (const [name, value] of CK.list) {
+      await cdp.send("Network.setCookie", { name, value, domain: "dy.nankai.edu.cn", path: "/", httpOnly: true, secure: true });
+    }
+    log(`cookie set: ${CK.list.map(p => p[0]).join(", ")}`);
 
     log("navigate");
     await cdp.send("Page.navigate", { url: URL_EXAM });
     await sleep(3500);
-    const pre = (await cdp.send("Runtime.evaluate", { expression: "document.documentElement.outerHTML", returnByValue: true })).result.value;
-    if (!pre.includes("开始考试")) { log("未到开考页（cookie 可能失效）"); return; }
+    log("page: " + (await cdp.send("Runtime.evaluate", { expression: "location.href + ' | ' + document.title", returnByValue: true })).result.value);
+    const preHtml = await getHtml();
+    fs.writeFileSync(path.join(OUT, "page-before.html"), preHtml || "", "utf8");
+    await snap("00-before-start");
+    if (!preHtml.includes("开始考试")) { log("未到开考页（cookie 可能失效 / 未登录），已保存 page-before.html"); return; }
 
     const tStart = Date.now();
-    await cdp.send("Runtime.evaluate", { expression: "document.getElementById('ContentPlaceHolder1_ContentPlaceHolder1_btnStart').click()", returnByValue: true });
+    const clickedStart = await clickBy("btnStart", "开始考试");
+    log("click start -> " + clickedStart);
+    if (!clickedStart) { log("找不到「开始考试」按钮"); return; }
     await sleep(6000);
-    const html = (await cdp.send("Runtime.evaluate", { expression: "document.documentElement.outerHTML", returnByValue: true })).result.value;
+    const html = await getHtml();
 
     const qs = [];
     const ms = [...html.matchAll(/lbQTitle[^>]*>([\s\S]*?)<\/span>/g)];
@@ -76,6 +135,12 @@ class CDP {
     }
     fs.writeFileSync(path.join(OUT, "questions.json"), JSON.stringify(qs, null, 1), "utf8");
     log(`questions=${qs.length}`);
+    await snap("01-questions");
+    if (!qs.length) {
+      fs.writeFileSync(path.join(OUT, "page-questions.html"), html || "", "utf8");
+      log("解析到 0 题，页面结构可能变化，已保存 page-questions.html");
+      return;
+    }
 
     const ready = path.join(OUT, "answers.ready.json");
     log("waiting answers.ready.json");
@@ -84,12 +149,22 @@ class CDP {
     const ans = JSON.parse(fs.readFileSync(ready, "utf8"));
     const applied = await cdp.send("Runtime.evaluate", { expression: `(()=>{const a=${JSON.stringify(ans)};let ok=0,miss=[];for(const k of Object.keys(a)){const el=document.querySelector("input[type=radio][value='"+a[k]+"']");if(el){el.checked=true;el.dispatchEvent(new Event('click',{bubbles:true}));ok++;}else miss.push(k);}return JSON.stringify({ok,miss});})()`, returnByValue: true });
     log("apply " + applied.result.value);
+    try {
+      const info = JSON.parse(applied.result.value);
+      if (info.miss && info.miss.length) log(`WARN 未点选成功的题: ${info.miss.join(",")}`);
+      log(`answered=${Object.keys(ans).length}/${qs.length}`);
+    } catch (e) {}
+    await snap("02-answered");
 
-    const el = Date.now() - tStart;
-    if (el < HOLD_SEC * 1000) { log(`hold ${Math.round((HOLD_SEC * 1000 - el) / 1000)}s`); await sleep(HOLD_SEC * 1000 - el); }
+    // 需求：答完题后先停 HOLD_SEC 秒（默认 120s）再交卷，留出人工复核时间；不按开考时刻倒扣
+    const tAnswered = Date.now();
+    log(`hold ${HOLD_SEC}s after answering (before submit)`);
+    await sleep(HOLD_SEC * 1000);
+    log(`hold done, elapsed since answering ${Math.round((Date.now() - tAnswered) / 1000)}s`);
 
     log("submit");
-    await cdp.send("Runtime.evaluate", { expression: "document.getElementById('ContentPlaceHolder1_ContentPlaceHolder1_btnSubmit').click()", returnByValue: true }).catch(e => log("submit err " + e.message));
+    const clickedSubmit = await clickBy("btnSubmit", "交卷|提交|完成考试");
+    log("click submit -> " + clickedSubmit);
     await sleep(4000);
 
     for (let step = 0; step < 6; step++) {
@@ -101,9 +176,17 @@ class CDP {
       await sleep(3000);
     }
     await sleep(1500);
+    await snap("03-result");
     const finalHtml = await cdp.send("Runtime.evaluate", { expression: "document.documentElement.outerHTML", returnByValue: true }).then(r => r.result.value).catch(() => "");
     fs.writeFileSync(path.join(OUT, "result.html"), finalHtml || "", "utf8");
     log(`result.html len=${(finalHtml || "").length}`);
+    if (process.env.KEEP_OPEN === "1") {
+      log("KEEP_OPEN=1：浏览器保持打开，关闭该窗口后本进程自动退出");
+      for (let i = 0; i < 3600; i++) {
+        try { await fetch(`http://127.0.0.1:${PORT}/json/version`); } catch (e) { break; }
+        await sleep(2000);
+      }
+    }
   } catch (e) {
     log("FATAL " + e.message);
   } finally {

@@ -26,9 +26,11 @@ dy_lib/
 │   └── questions.sample.json  # 查询示例输入
 ├── scripts/
 │   ├── lib_match.js           # 匹配核心库
+│   ├── get_cookie.js          # 有头 Chrome 取 cookie（带登录校验）
 │   ├── answer_paper.js        # 题库查询 CLI
 │   ├── prepare_answers.js     # 为一次考试生成答案
-│   ├── exam_runner.js         # 开考/答题/交卷 runner（CDP）
+│   ├── merge_ready.js         # 合并命中答案 + 补答 -> answers.ready.json
+│   ├── exam_runner.js         # 开考/答题/暂停/交卷 runner（CDP）
 │   ├── parse_result.js        # 解析交卷结果页
 │   ├── merge_exam.js          # 合并新答案进题库
 │   ├── build_bank.js          # 从 raw 文本重建题库
@@ -110,7 +112,25 @@ jq '.[] | select(.stem | contains("周作人")) | {stem, answer_text}' data/bank
 
 ## Cookie 说明（重要）
 
-`exam_runner.js` 需要登录后的会话 cookie：
+`exam_runner.js` 需要登录后的会话 cookie `ASP.NET_SessionId`。
+
+> 坑：这个 cookie 在**未登录时也会下发**，所以“拿到 cookie”不等于“已登录”。
+> 必须确认该 session 能打开考试页（页面出现「开始考试」）才算有效。
+
+### 一条命令取 cookie（推荐）
+
+```bash
+node scripts/get_cookie.js
+```
+
+1. 脚本会用独立 profile 打开**有头 Chrome**（调试端口 9333）；
+2. 在窗口里正常登录 `dy.nankai.edu.cn`；
+3. 脚本检测到「该 session 能打开考试页」后，自动打印 cookie 和可复制的 `$env:EXAM_COOKIE="..."`。
+
+登录态缓存在 `%TEMP%\dy-lib-chrome-profile`，下次同一条命令可直接复用。
+常用选项：`--port=9334`、`--timeout=900`、`--value-only`（只打印值）、`--json`、`--attach-only`。
+
+### 手动取
 
 1. 浏览器登录 `https://dy.nankai.edu.cn`
 2. 打开 DevTools → Application → Cookies → `https://dy.nankai.edu.cn`
@@ -135,6 +155,7 @@ node scripts/exam_runner.js run1
 
 ```bash
 # 0) 依赖：Node 22+、本机 Chrome
+node scripts/get_cookie.js        # 取 cookie（有头 Chrome，登录后自动打印）
 export EXAM_COOKIE="..."
 
 # 1) 开考并导出题目（脚本会等待 answers.ready.json）
@@ -146,8 +167,9 @@ node scripts/prepare_answers.js run1
 #    -> runs/run1/unmatched.json  未命中，需要补答
 
 # 3) 补答未命中的题后，合并成 ready 文件
-#    （Agent 依据 unmatched.json 的选项作答，写入同样格式）
-node -e "const fs=require('fs');const a=JSON.parse(fs.readFileSync('runs/run1/answers.json'));a['12']='34567';fs.writeFileSync('runs/run1/answers.ready.json',JSON.stringify(a))"
+#    （Agent 依据 unmatched.json 的选项作答，写入 runs/run1/overrides.json，格式 {"idx":"optionId"}）
+node scripts/merge_ready.js run1 runs/run1/overrides.json
+#    -> runs/run1/answers.ready.json （runner 看到它就停止等待，先挂起 HOLD_SEC 秒再交卷）
 
 # 4) runner 检测到 ready 后自动交卷，输出 runs/run1/result.html
 # 5) 解析结果页（含全部参考答案）并计算得分
@@ -171,23 +193,30 @@ node scripts/merge_exam.js run1
 
 | 脚本 | 作用 | 用法 |
 |---|---|---|
+| `get_cookie.js` | 有头 Chrome 登录后取 `ASP.NET_SessionId`（带登录校验） | `node scripts/get_cookie.js` |
 | `answer_paper.js` | 题库查询 | `node scripts/answer_paper.js <questions.json>` |
 | `prepare_answers.js` | 为一次考试匹配答案 | `node scripts/prepare_answers.js <tag>` |
-| `exam_runner.js` | 开考→导出题目→等待答案→交卷→存结果页 | `EXAM_COOKIE=... node scripts/exam_runner.js <tag>` |
+| `merge_ready.js` | 合并命中答案 + 补答，生成 `answers.ready.json` | `node scripts/merge_ready.js <tag> [overrides.json]` |
+| `exam_runner.js` | 开考→导出题目→等待答案→**答完后暂停 `HOLD_SEC` 秒**→交卷→存结果页与截图 | `EXAM_COOKIE=... node scripts/exam_runner.js <tag>` |
 | `parse_result.js` | 解析结果页与得分 | `node scripts/parse_result.js <tag>` |
 | `merge_exam.js` | 合并答案进题库 | `node scripts/merge_exam.js <tag>` |
 | `build_bank.js` | 从 `data/raw` 文本重建题库 | `node scripts/build_bank.js` |
 | `extract_docx_text.ps1` | docx 转文本 | `pwsh -File scripts/extract_docx_text.ps1 -Docx data/raw/大语题库.docx -Out data/raw/大语题库.txt` |
 
+`exam_runner.js` 的运行产物都在 `runs/<tag>/`：`questions.json`、`00-before-start.png`、`01-questions.png`、
+`02-answered.png`、`03-result.png`、`result.html`、`run.log`，便于人工复核。
+
 环境变量：
 
 | 变量 | 说明 |
 |---|---|
-| `EXAM_COOKIE` | 必填，`ASP.NET_SessionId` 的值 |
+| `EXAM_COOKIE` | 必填，`ASP.NET_SessionId` 的值。四种写法都支持（自动提取）：纯值 / `ASP.NET_SessionId=...` / 整行 `Cookie:` 头 / DevTools 的 `Copy as cURL` 整段 |
 | `CHROME_PATH` | 可选，Chrome 路径 |
-| `HEADLESS` | `1` 无头模式（默认有头） |
-| `HOLD_SEC` | 交卷前保持秒数（默认 120） |
+| `HEADLESS` | `1` 无头模式（默认有头，可见浏览器窗口） |
+| `HOLD_SEC` | **答完题后**暂停多少秒再交卷（默认 120 = 2 分钟） |
+| `KEEP_OPEN` | `1` 交卷后保持浏览器打开，直到手动关闭 |
 | `EXAM_URL` | 可选，默认 `.../ExamPaper.aspx?EPID=8` |
+| `COOKIE_PORT` / `COOKIE_PROFILE` | `get_cookie.js` 的调试端口 / profile 目录 |
 
 ## 给 AI Agent
 
